@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área de Aulas - Monetizando como Afiliado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('CAPA INTERNA.png') no-repeat center center;
+      background-size: cover;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .intro h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: #ff6b00;
+    }
+
+    .intro p {
+      font-size: 17px;
+      color: #ccc;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .aulas-container {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    /* Aula desbloqueada */
+    .aula {
+      background: linear-gradient(135deg, #ff4500, #ff6600);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(255, 90, 0, 0.5);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .aula:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(255, 90, 0, 0.7);
+    }
+
+    /* Aula bloqueada */
+    .aula.locked {
+      background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+      border: 2px dashed #444;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+
+    .aula.locked:hover {
+      transform: none;
+    }
+
+    .aula-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .icon {
+      font-size: 40px;
+      flex-shrink: 0;
+    }
+
+    .aula.locked .icon {
+      filter: grayscale(100%);
+      opacity: 0.5;
+    }
+
+    .aula h2 {
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .aula.locked h2 {
+      color: #666;
+    }
+
+    .aula p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 15px 0;
+      opacity: 0.95;
+    }
+
+    .aula.locked p {
+      color: #777;
+    }
+
+    .release-info {
+      display: inline-block;
+      background: rgb(255 255 255 / 28%);
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    .aula.locked .release-info {
+      background: rgba(255, 107, 0, 0.2);
+      color: #ff8a33;
+    }
+
+    .cta-assistir {
+      display: inline-block;
+      margin-top: 15px;
+      background: #000;
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      border: 2px solid #000;
+    }
+
+    .cta-assistir:hover {
+      background: #111;
+      transform: scale(1.05);
+    }
+
+    .cta-assistir.disabled {
+      background: #333;
+      color: #666;
+      cursor: not-allowed;
+      border-color: #444;
+      pointer-events: none;
+    }
+
+    .lock-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+      opacity: 0.2;
+    }
+
+    .aula.locked .lock-overlay {
+      display: flex;
+    }
+
+    footer {
+      margin-top: 80px;
+      padding: 50px 20px;
+      background: #111;
+      text-align: center;
+    }
+
+    footer h3 {
+      font-size: 1.5rem;
+      margin-bottom: 25px;
+      color: #ff6600;
+      text-transform: uppercase;
+    }
+
+    footer img {
+      width: 100%;
+      max-width: 950px;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(255, 90, 0, 0.5);
+    }
+
+
+
+    @media (max-width: 600px) {
+
+      .intro h2 {
+        font-size: 22px;
+      }
+
+      .aula h2 {
+        font-size: 1.1rem;
+      }
+
+      .icon {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+  </header>
+
+  <div class="container">
+    <div class="intro">
+      <h2>🎓 Aulas Gratuitas do Projeto Monetizando como Afiliado</h2>
+      <p>
+        Assista às aulas na sequência e aplique cada estratégia revelada.
+        Esse é o mesmo método que ajudou centenas de pessoas a saírem do zero e
+        construírem renda recorrente como afiliados da Shopee!
+      </p>
+    </div>
+
+    <div class="aulas-container">
+
+      <!-- AULA 1 - DESBLOQUEADA (para controlar, mude a classe para "aula locked") -->
+      <div class="aula" data-aula="1">
+        <div class="lock-overlay">🔒</div>
+        <div class="aula-header">
+          <div class="icon">🎯</div>
+          <h2>Aula 1 - Como Criar a Conta de Afiliado</h2>
+        </div>
+        <p>
+          Aprenda a criar sua conta oficial de afiliado na Shopee em menos de 10 minutos
+          e configure seu link de vendas infalível que rastreia todas as suas comissões.
+        </p>
+        <span class="release-info">✅ Disponível agora</span>
+        <br>
+        <a href="#" class="cta-assistir">▶ ASSISTIR AGORA</a>
+      </div>
+
+      <!-- AULA 2 - BLOQUEADA (libera em data específica) -->
+      <div class="aula locked" data-aula="2">
+        <div class="lock-overlay">🔒</div>
+        <div class="aula-header">
+          <div class="icon">🎨</div>
+          <h2>Aula 2 - A Anatomia do Criativo Vencedor</h2>
+        </div>
+        <p>
+          Descubra a estrutura exata dos criativos que geram milhares de cliques e vendas.
+          Você vai aprender os gatilhos visuais e textos que convertem melhor.
+        </p>
+        <span class="release-info">🔒 Liberação: 18/10/2025 às 20h</span>
+        <br>
+        <a href="#" class="cta-assistir disabled">🔒 BLOQUEADA</a>
+      </div>
+
+      <!-- AULA 3 - BLOQUEADA (libera em data específica) -->
+      <div class="aula locked" data-aula="3">
+        <div class="lock-overlay">🔒</div>
+        <div class="aula-header">
+          <div class="icon">🚀</div>
+          <h2>Aula 3 - Subindo Sua Primeira Campanha</h2>
+        </div>
+        <p>
+          Veja o passo a passo completo, na prática, de como montar e rodar seu primeiro
+          anúncio de vendas. Sem enrolação, direto ao ponto.
+        </p>
+        <span class="release-info">🔒 Liberação: 21/10/2025 às 20h</span>
+        <br>
+        <a href="#" class="cta-assistir disabled">🔒 BLOQUEADA</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <h3>🔥Esses são alguns módulos do nosso curso VIP</h3>
+    <p style="color: #ccc; margin-bottom: 25px; font-size: 16px;">
+      Essas 3 aulas são apenas uma pequena amostra do potencial do método completo.
+    </p>
+    <img src="Capturarvhl.PNG" alt="Módulos do Curso VIP Completo">
+    <br>
+  </footer>
+
+  <script>
+    /* ============================================
+       SISTEMA DE CONTROLE DE LIBERAÇÃO DE AULAS
+       ============================================
+       
+       Para LIBERAR uma aula manualmente:
+       1. Encontre o bloco da aula que deseja liberar
+       2. Remova a classe "locked" da div principal
+       3. Altere o texto do release-info para "✅ Disponível agora"
+       4. Remova a classe "disabled" do link de assistir
+       5. Altere o texto do botão para "▶ ASSISTIR AGORA"
+       
+       OU use o sistema automático abaixo:
+    */
+
+    // Configuração das datas de liberação (formato: YYYY-MM-DD HH:MM)
+    const liberacaoAulas = {
+      1: null, // null = já liberada
+      2: '2025-10-18 20:19',
+      3: '2025-10-21 20:00'
+    };
+
+    function verificarLiberacao() {
+      const agora = new Date();
+
+      Object.keys(liberacaoAulas).forEach(aulaNum => {
+        const dataLiberacao = liberacaoAulas[aulaNum];
+
+        if (dataLiberacao) {
+          const dataLib = new Date(dataLiberacao);
+
+          if (agora >= dataLib) {
+            liberarAula(aulaNum);
+          }
+        }
+      });
+    }
+
+    function liberarAula(numeroAula) {
+      const aulaDiv = document.querySelector(`[data-aula="${numeroAula}"]`);
+
+      if (aulaDiv && aulaDiv.classList.contains('locked')) {
+        aulaDiv.classList.remove('locked');
+
+        const releaseInfo = aulaDiv.querySelector('.release-info');
+        if (releaseInfo) {
+          releaseInfo.innerHTML = '✅ Disponível agora';
+        }
+
+        const botao = aulaDiv.querySelector('.cta-assistir');
+        if (botao) {
+          botao.classList.remove('disabled');
+          botao.innerHTML = '▶ ASSISTIR AGORA';
+        }
+      }
+    }
+
+    // Verifica liberação ao carregar a página
+    verificarLiberacao();
+
+    // Verifica a cada 1 minuto se alguma aula deve ser liberada
+    setInterval(verificarLiberacao, 60000);
+  </script>
+
+</body>
+
+</html>
